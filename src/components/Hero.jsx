@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -24,7 +24,7 @@ export default function Hero() {
         <Link to="/projects" className="btn btn-primary">
           View Projects
         </Link>
-        <a href="/resume.pdf" className="btn btn-outline">
+        <a href="/aaron-weisenburger-resume.png" className="btn btn-outline">
           Download Resume
         </a>
       </div>
@@ -33,9 +33,7 @@ export default function Hero() {
       <div className="hero-glow hero-glow--secondary">
         <img src="/glow-ellipse-2.svg" alt="" />
       </div>
-      <div className="hero-card"></div>
-      <p className="hero-card-label">picture</p>
-      <p className="hero-card-caption">simple caption</p>
+      <img className="hero-card" src="/aaron-headshot.jpeg"></img>
     </section>
-  )
+  );
 }
