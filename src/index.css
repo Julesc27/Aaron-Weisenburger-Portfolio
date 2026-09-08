@@ -2007,3 +2007,250 @@ a {
     align-items: flex-start;
   }
 }
+
+/* ===== Contact page (Figma node 32:161) ===== */
+
+.contact-page {
+  flex: 1 0 auto;
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0;
+}
+
+.contact-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-page-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 90px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 480px;
+  max-width: 537px;
+}
+
+.contact-heading {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.15;
+  color: #0f172a;
+}
+
+.contact-heading-accent {
+  color: #22d3ee;
+}
+
+.contact-subheading {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #0f172a;
+}
+
+.contact-body {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #0f172a;
+}
+
+.contact-interest-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-interest-list li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.contact-interest-arrow {
+  width: 20px;
+  height: 7px;
+  flex-shrink: 0;
+}
+
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #0f172a;
+  border-radius: 10px;
+  padding: 37px 63px;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  flex: 0 1 600px;
+}
+
+.contact-card-glow {
+  position: absolute;
+  left: 38px;
+  top: 57px;
+  width: 523px;
+  height: 490px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-card-glow img {
+  position: absolute;
+  left: -120px;
+  top: -120px;
+  width: 763px;
+  height: 730px;
+  max-width: none;
+}
+
+.contact-card-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+}
+
+.contact-card-heading-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-card-text {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+  color: #ffffff;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.contact-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.contact-form .form-row {
+  gap: 35px;
+}
+
+.contact-form .form-field label {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: normal;
+}
+
+.contact-form .form-field input,
+.contact-form .form-field textarea {
+  border-color: #b8c7d3;
+}
+
+.contact-form .form-field textarea {
+  height: 119px;
+}
+
+.contact-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 14px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-submit:hover {
+  background-color: #d97e06;
+}
+
+.contact-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact-submit-arrow {
+  width: 15px;
+  height: 11px;
+  transform: rotate(-45deg);
+}
+
+.contact-form .form-status--success {
+  color: #4ade80;
+}
+
+.contact-form .form-status--error {
+  color: #f87171;
+}
+
+@media (max-width: 900px) {
+  .contact-page-inner {
+    padding: 0 24px;
+    flex-direction: column;
+  }
+
+  .contact-heading {
+    font-size: 40px;
+  }
+
+  .contact-card {
+    max-width: 100%;
+  }
+
+  .contact-form .form-row {
+    flex-direction: column;
+  }
+}

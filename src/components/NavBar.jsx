@@ -27,7 +27,11 @@ export default function NavBar() {
             </NavLink>
           ))}
         </div>
-        <a href="/resume.pdf" className="resume-btn">
+        <a
+          href="/aaron-weisenburger-resume.png"
+          download="Aaron-Weisenburger-Resume.png"
+          className="resume-btn"
+        >
           <span>Resume</span>
           <img src="/arrow.svg" className="resume-icon" alt="" />
         </a>

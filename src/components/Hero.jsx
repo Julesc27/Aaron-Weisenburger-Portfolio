@@ -24,7 +24,11 @@ export default function Hero() {
         <Link to="/projects" className="btn btn-primary">
           View Projects
         </Link>
-        <a href="/aaron-weisenburger-resume.png" className="btn btn-outline">
+        <a
+          href="/aaron-weisenburger-resume.png"
+          download="Aaron-Weisenburger-Resume.png"
+          className="btn btn-outline"
+        >
           Download Resume
         </a>
       </div>
