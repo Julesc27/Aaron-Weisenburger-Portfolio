@@ -1,0 +1,322 @@
+/* ===================================================
+   Global stylesheet — shared by every page in the site
+   =================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "IBM Plex Sans", sans-serif;
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== NavBar (Figma node 1:3) =====
+   Reused, unchanged, at the top of every page. */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0f172a;
+  padding: 15px 44px 15px 50px;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.logo .weisenburger {
+  color: #22d3ee;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links a {
+  position: relative;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+  padding-bottom: 6px;
+}
+
+.nav-links a.active {
+  font-weight: 600;
+}
+
+/* Figma "Line 1" node — short active-page indicator under the current link */
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 1px;
+  background-color: #c4e7d4;
+}
+
+.resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f59e0b;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.resume-btn span {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.resume-icon {
+  width: 13px;
+  height: 7px;
+  transform: rotate(-51.34deg);
+}
+
+/* ===== Shared page-body placeholder =====
+   Reused by every subpage until each gets its own designed section. */
+
+.page-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.page-main h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 40px;
+  margin: 0 0 16px;
+}
+
+.page-main p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.hero {
+  position: relative;
+  flex: 1 0 auto;
+  width: 100%;
+  min-height: 631px;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #0f172a;
+}
+
+/* Diagonal grid pattern tile — sits behind everything in the hero,
+   boosted with a screen blend so it stays visible against the dark navy. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  mix-blend-mode: screen;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-glow {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-glow img {
+  position: absolute;
+  max-width: none;
+}
+
+.hero-glow--primary {
+  left: 87px;
+  top: 70px;
+  width: 1299px;
+  height: 522px;
+}
+
+.hero-glow--primary img {
+  left: -180px;
+  top: -180px;
+  width: 1659px;
+  height: 882px;
+}
+
+.hero-glow--secondary {
+  left: 971px;
+  top: 125px;
+  width: 304px;
+  height: 364px;
+}
+
+.hero-glow--secondary img {
+  left: -140px;
+  top: -140px;
+  width: 584px;
+  height: 644px;
+}
+
+.hero-eyebrow {
+  position: absolute;
+  z-index: 2;
+  left: 164px;
+  top: 120px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  color: #22d3ee;
+  white-space: nowrap;
+}
+
+.hero-heading {
+  position: absolute;
+  z-index: 2;
+  left: 164px;
+  top: 160px;
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.15;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.hero-heading .accent {
+  color: #22d3ee;
+}
+
+.hero-text {
+  position: absolute;
+  z-index: 2;
+  left: 164px;
+  top: 338px;
+  width: 694px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.hero-actions {
+  position: absolute;
+  z-index: 2;
+  left: 164px;
+  top: 468px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 43px;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #f59e0b;
+  color: #0f172a;
+  border: 1px solid transparent;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.hero-card-frame {
+  position: absolute;
+  z-index: 2;
+  left: 954px;
+  top: 111px;
+  width: 350px;
+  height: 400px;
+  background-color: #0f172a;
+  border: 1px solid rgba(184, 199, 211, 0.5);
+  border-radius: 10px;
+}
+
+.hero-card {
+  position: absolute;
+  z-index: 2;
+  left: 983px;
+  top: 140px;
+  width: 292px;
+  height: 315px;
+  background-color: #b8c7d3;
+  border: 1px solid rgba(184, 199, 211, 0.5);
+  border-radius: 10px;
+}
+
+.hero-card-label {
+  position: absolute;
+  z-index: 2;
+  left: 1023px;
+  top: 245px;
+  width: 176px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  color: #ffffff;
+}
+
+.hero-card-caption {
+  position: absolute;
+  z-index: 2;
+  left: 1009px;
+  top: 468px;
+  width: 154px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
