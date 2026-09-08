@@ -14,11 +14,20 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   font-family: "IBM Plex Sans", sans-serif;
   background-color: #ffffff;
   color: #0f172a;
+}
+
+/* The Vite/React mount point is the real flex container: NavBar, the
+   routed page's sections, and the Footer all render as its direct
+   children (JSX fragments don't add a wrapper element in the DOM), so
+   this is what needs display:flex — not body — for a short page's
+   flex:1 content (e.g. .page-main) to push the footer to the bottom. */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -113,10 +122,13 @@ a {
    Reused by every subpage until each gets its own designed section. */
 
 .page-main {
+  flex: 1 0 auto;
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: 80px 24px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .page-main h1 {
@@ -851,4 +863,325 @@ a {
     width: 100%;
     height: 160px;
   }
+}
+
+/* ===== About Aaron (Figma node 17:143) ===== */
+
+.about {
+  background-color: #0f172a;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  padding: 70px 0;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  mix-blend-mode: screen;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-glow {
+  position: absolute;
+  left: 82px;
+  top: 40px;
+  width: 1331px;
+  height: 261px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-glow img {
+  position: absolute;
+  left: -200px;
+  top: -200px;
+  width: 1731px;
+  height: 661px;
+  max-width: none;
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 90px;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 380px;
+  max-width: 470px;
+}
+
+.about-description {
+  margin: 0;
+  flex: 1 1 480px;
+  max-width: 639px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .about-inner {
+    padding: 0 24px;
+  }
+
+  .about-text {
+    max-width: none;
+  }
+
+  .about-description {
+    max-width: none;
+  }
+}
+
+/* ===== Next Opportunity / Contact form (Figma node 17:174) — Home page only ===== */
+
+.opportunity {
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0;
+}
+
+.opportunity::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.opportunity-glow {
+  position: absolute;
+  left: 114px;
+  top: 60px;
+  width: 1195px;
+  height: 367px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.opportunity-glow img {
+  position: absolute;
+  left: -200px;
+  top: -200px;
+  width: 1595px;
+  height: 767px;
+  max-width: none;
+}
+
+.opportunity-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 90px;
+}
+
+.opportunity-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.opportunity-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 480px;
+  max-width: 640px;
+}
+
+.opportunity-heading-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opportunity-description {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  color: #0f172a;
+}
+
+.opportunity-form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 0 1 464px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-field {
+  flex: 1 1 0;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field label {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #0f172a;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #2563eb;
+  border-radius: 5px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 16px;
+  color: #0f172a;
+  padding: 6px 10px;
+}
+
+.form-field input {
+  height: 33px;
+}
+
+.form-field textarea {
+  height: 96px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
+
+@media (max-width: 900px) {
+  .opportunity-inner {
+    padding: 0 24px;
+  }
+
+  .opportunity-text {
+    max-width: none;
+  }
+
+  .opportunity-form {
+    flex-basis: 100%;
+  }
+}
+
+/* ===== Site footer (Figma node 17:220) — every page ===== */
+
+.site-footer {
+  background-color: #0f172a;
+  flex-shrink: 0;
+}
+
+.site-footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 21px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copyright {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.footer-links a {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .site-footer-inner {
+    padding: 21px 24px;
+  }
+}
+
+/* ===== Contact form submit + status (functional addition, not in Figma) ===== */
+
+.form-submit {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-status {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.form-status--success {
+  color: #15803d;
+}
+
+.form-status--error {
+  color: #dc2626;
 }
