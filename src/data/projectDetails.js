@@ -35,7 +35,13 @@ export const projectDetails = {
     ],
     resultsHeading: "Results",
     skillsLine: "Skills: Open Rocket, Laser Cutting, Safety",
-    resultsImageCount: 2,
+    // No real photos yet — each entry renders as an actual <img>, just
+    // pointed at a placeholder graphic for now. Once real photos exist,
+    // drop the files in /public and swap the `src` (and `alt`) here.
+    resultsImages: [
+      { src: "/results-placeholder.svg", alt: "Photo of the finished rocket (coming soon)" },
+      { src: "/results-placeholder.svg", alt: "Photo of the finished rocket (coming soon)" },
+    ],
     resultsParagraphs: [
       "The rocket was built from September to November of 2025 under the guidance of senior members of Rensselaer Rocket Society.",
       "Learned the basics of rocket design using Open Rocket and building techniques such as creating good fin fillets.",

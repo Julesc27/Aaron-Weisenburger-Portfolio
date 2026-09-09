@@ -71,8 +71,13 @@ export default function ProjectDetailContent({ detail, project }) {
           </div>
           <div className="detail-results-body">
             <div className="detail-results-images">
-              {Array.from({ length: detail.resultsImageCount }).map((_, i) => (
-                <div className="detail-results-image" key={i}></div>
+              {detail.resultsImages.map((image, i) => (
+                <img
+                  key={i}
+                  className="detail-results-image"
+                  src={image.src}
+                  alt={image.alt}
+                />
               ))}
             </div>
             <div className="detail-results-text">
