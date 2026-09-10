@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-// Reuses the same Formspree endpoint/pattern as the homepage's "Next
+// Reuses the same Web3Forms config/pattern as the homepage's "Next
 // Opportunity" form (see NextOpportunity.jsx) so both forms deliver real
-// email once a Formspree form id is configured there.
-import { FORMSPREE_ENDPOINT } from '../data/contact.js'
+// email via the same Web3Forms access key.
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../data/contact.js'
 
 const interests = [
   'Aerospace engineering internships',
@@ -22,15 +22,18 @@ export default function ContactPage() {
 
     const form = event.target
     const data = new FormData(form)
+    data.append('access_key', WEB3FORMS_ACCESS_KEY)
+    data.append('subject', 'New message from the Contact page')
 
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
       })
+      const result = await response.json()
 
-      if (response.ok) {
+      if (result.success) {
         setStatus('success')
         form.reset()
       } else {
