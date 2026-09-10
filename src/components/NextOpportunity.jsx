@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FORMSPREE_ENDPOINT } from '../data/contact.js'
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../data/contact.js'
 
 export default function NextOpportunity() {
   const [status, setStatus] = useState('idle') // idle | sending | success | error
@@ -10,15 +10,18 @@ export default function NextOpportunity() {
 
     const form = event.target
     const data = new FormData(form)
+    data.append('access_key', WEB3FORMS_ACCESS_KEY)
+    data.append('subject', 'New message from the Next Opportunity form')
 
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
       })
+      const result = await response.json()
 
-      if (response.ok) {
+      if (result.success) {
         setStatus('success')
         form.reset()
       } else {
