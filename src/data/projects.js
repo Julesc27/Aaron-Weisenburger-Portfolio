@@ -1,30 +1,39 @@
 export const featuredProject = {
-  id: "l1-rocket",
-  title: "Level 1 High Powered Rocket",
+  id: "l2-rocket-mk2",
+  title: "Level 2 High Powered Rocket MK2",
   description:
-    "Designed and fabricated structural components for Rensselaer Rocket Society’s competition vehicle, including fiberglass body tubes, a nose cone, motor tube, couplers, fins, bulkheads, and a carbon-fiber-reinforced fin can.",
-  results: "explain the results that happened here",
-  tags: ["Fiberglass", "other things", "CAD", "Soldering"],
-  category: "Aerospace",
+    "Constructed a fiberglass high-powered model rocket using parts from a 3-inch diamter Wildman Punisher kit and fabricated my own body tube, fins and centering rings. Designed my own avionics bay in Siemens NX to house necessary electronic components.",
+    results: "Coming Soon",
+  tags: ["Composites", "OpenRocket Simulator", "CAD"],
+  category: "Aerospace", 
 };
 
 export const projects = [
   {
-    id: "l2-mk1-a",
+    id: "l2-rocket-mk1",
     title: "Level 2 High Powered Rocket MK1",
     description:
-      "Constructed and iterated on a fiberglass high-powered rocket while applying OpenRocket analysis, recovery-system testing, center-of-gravity checks, and avionics troubleshooting.",
-    results: "explain the results that happened here",
-    tags: ["Fiberglass", "other things", "CAD", "Soldering"],
+      "Constructed a fiberglass high-powered model rocket using a 3-inch-diameter Wildman Punisher kit. Applied avionics knowledge to resolve recovery issues by reconfiguring faulty components. Conducted ground test using black powdered charges to ensure complete seperation.",
+    results: "Rocket achived max 1,373 meters max speed of Mach 0.4",
+    tags: ["Composites", "OpenRocket Simulator", "CAD", "Soldering", "Safety"],
     category: "Aerospace",
   },
   {
-    id: "l2-mk1-b",
-    title: "Level 2 High Powered Rocket MK1",
+    id: "irec-rocket-2026",
+    title: "Rensselaer Rocket Society IREC Rocket (2026)",
     description:
-      "Constructed and iterated on a fiberglass high-powered rocket while applying OpenRocket analysis, recovery-system testing, center-of-gravity checks, and avionics troubleshooting.",
-    results: "explain the results that happened here",
-    tags: ["Fiberglass", "other things", "CAD", "Soldering"],
+      "Apart of structures subsystem for RRS's Intercollegiate Rocketry and Engineering Competition (IREC) team, which flew a payload of 9,863 feet on a student-developed solid rocket motor, deployed the payload at apogee, collected flight data, and recovered the vechile.",
+    results: "Earned 24th out of 143 overall in IREC and 4th place overall in the 10K student-researched and developed(SRAD) category despite working on an extremely limited budget.",
+    tags: ["Composites", "OpenRocket Simulator", "CAD/CAM", "CNC", "Safety"],
+    category: "Aerospace",
+  },
+  {
+    id: "irec-rocket-2027",
+    title: "Rensselaer Rocket Society IREC Rocket (2027)",
+    description:
+      "Structures lead for RRS's Intercollegiate Rocketry and Engineering Competition(IREC) team committee, designning an aerospace vehicle with airbrakes to achieve an apogee 30,000 ft with a student-developed solied rocket motor. Organied team meetings approximately 4 hours a week to CAD and then fabricate a subscale of the IREC rocket to develop necessary skills for the actual vehicle.",
+    results: "Coming Soon ",
+    tags: ["Composites", "OpenRocket Simulator", "CAD", "Soldering"],
     category: "Aerospace",
   },
 ];

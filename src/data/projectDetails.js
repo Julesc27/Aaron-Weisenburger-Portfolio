@@ -3,33 +3,62 @@
 // finished detail design in Figma have an entry here — others fall back
 // to the simple "coming soon" placeholder in ProjectDetail.jsx.
 export const projectDetails = {
-  "l1-rocket": {
+  "l2-rocket-mk2": {
     eyebrow: "FEATURED PROJECT",
-    heroTitle: "Level 1 High-Powered Rocket:",
+    heroTitle: "Level 2 High Powered Rocket MK2:",
     heroParagraphs: [
-      "Built, launched, and recovered a high-powered model rocket with an H-class motor(Impulse range: 226 Newton-seconds), demonstrating understanding of structural design, propulsion, and safety.",
+      "",
     ],
     badges: ["Rensselaer Rocket Society", "Aerospace"],
+    heroImage: { src: "/l2-rocket-mk2.jpg", alt: "The finished MK2 rocket standing upright" },
     materialsHeading: "Materials and construction:",
     materialsGroups: [
       {
         title: "Airframe construction",
         rows: [
           { label: "Body tubes", value: "Fiberglass roll-wrapped" },
-          { label: "Composite layup", value: "6 oz fiberglass + sleeve" },
-          { label: "Wall thickness", value: "2.4 mm" },
-          { label: "Motor tube", value: "4-inch aluminum casing" },
-          { label: "Bonding system", value: "Aeropoxy" },
+          { label: "Composite layup", value: "6 oz fiberglass cloth" },
+          { label: "Wall thickness", value: "2.54 mm" },
+          { label: "Motor tube", value: "54-mm cardboard" },
+          { label: "Bonding system", value: "West Systems" },
         ],
       },
       {
         title: "Structural Components",
         rows: [
-          { label: "Fins", value: "1/4-inch G12 fiberglass" },
+          { label: "Fins", value: "1/8-inch G10 fiberglass" },
           { label: "Fin design", value: "Through-the-wall" },
           { label: "Reinforcement", value: "Carbon-fiber tip-to-tip" },
-          { label: "Nose cone", value: "Fiberglass sleeve" },
-          { label: "Mandrel", value: "3D-printed form" },
+          { label: "Nose cone", value: "3 inch 5:1 ogive fiberglass nosecone" },
+        ],
+      },
+    ],
+  },
+  "l2-rocket-mk1": {
+    eyebrow: "FEATURED PROJECT",
+    heroTitle: "Level 2 High Powered Rocket MK1:",
+    heroParagraphs: [
+      "",
+    ],
+    badges: ["Rensselaer Rocket Society", "Aerospace"],
+    heroImage: { src: "/mk1-midair.jpg", alt: "The finished MK2 rocket standing upright" },
+    materialsHeading: "Materials and construction:",
+    materialsGroups: [
+      {
+        title: "Airframe construction",
+        rows: [
+          { label: "Body tubes", value: "3 inch x 32 CNC-slotted airframe" },
+          { label: "Motor tube", value: "54 mm fiberglass MM" },
+          { label: "Bonding system", value: "Raka Inc." },
+        ],
+      },
+      {
+        title: "Structural Components",
+        rows: [
+          { label: "Fins", value: "1/8 inch G10 fins" },
+          { label: "Fin design", value: "Through-the-wall" },
+          { label: "Nose cone", value: "3 inch 5:1 ogive fiberglass nosecone"},
+          
         ],
       },
     ],
@@ -39,7 +68,7 @@ export const projectDetails = {
     // pointed at a placeholder graphic for now. Once real photos exist,
     // drop the files in /public and swap the `src` (and `alt`) here.
     resultsImages: [
-      { src: "/results-placeholder.svg", alt: "Photo of the finished rocket (coming soon)" },
+      { src: "/", alt: "Photo of the finished rocket (coming soon)" },
       { src: "/results-placeholder.svg", alt: "Photo of the finished rocket (coming soon)" },
     ],
     resultsParagraphs: [

@@ -573,19 +573,29 @@ a {
   box-shadow: 0 16px 32px rgba(15, 23, 42, 0.14);
 }
 
+/* Figma node 10:232/10:233 — a dark navy placeholder with the site's
+   diagonal grid pattern tiled at low opacity (same technique used behind
+   the Hero, Skills, and Experience sections), standing in until a real
+   project photo is ready. No text or icon inside it. */
 .feature-card-image {
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
   width: 420px;
   min-height: 272px;
-  background-color: #d9d9d9;
-  display: flex;
-  align-items: center;
-  padding-left: 37px;
-  box-sizing: border-box;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 600;
-  font-size: 40px;
-  color: #000000;
+  background-color: #0f172a;
+}
+
+.feature-card-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  mix-blend-mode: screen;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .feature-card-body {
@@ -615,7 +625,7 @@ a {
 
 .feature-results {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 7px;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
@@ -625,7 +635,6 @@ a {
 .results-divider {
   flex-shrink: 0;
   width: 2px;
-  height: 23px;
   background-color: #f59e0b;
 }
 
@@ -646,13 +655,17 @@ a {
   white-space: nowrap;
 }
 
+/* Grid (not flex) so cards keep a comfortable minimum width and wrap onto
+   a new row — stacking additional projects vertically in pairs — instead
+   of squeezing every card into one ever-narrower horizontal row as more
+   projects get added to the data file. */
 .project-grid {
-  display: flex;
-  gap: 95px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px 95px;
 }
 
 .project-card {
-  flex: 1;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -676,6 +689,22 @@ a {
   animation-delay: 0.2s;
 }
 
+.project-grid .project-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.project-grid .project-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.project-grid .project-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.project-grid .project-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
 @keyframes card-fade-up {
   from {
     opacity: 0;
@@ -688,9 +717,24 @@ a {
 }
 
 .project-card-image {
+  position: relative;
+  overflow: hidden;
+  display: block;
   width: 100%;
   height: 208px;
-  background-color: #d9d9d9;
+  background-color: #0f172a;
+}
+
+.project-card-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  mix-blend-mode: screen;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .project-card-body {
@@ -711,12 +755,22 @@ a {
 
 .project-card-body p {
   margin: 0;
-  flex: 1;
+  flex: none;
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: #000000;
   line-height: 1.4;
+}
+
+/* When a grid row stretches a shorter card to match a taller sibling,
+   the extra height needs somewhere to go. Rather than letting the
+   description or results paragraphs grow (which either stretches the
+   results divider past the text or opens a gap between the description
+   and results), push the leftover space down to sit above the tag row
+   so title/description/results always stay flush together at the top. */
+.project-card-body .tag-row {
+  margin-top: auto;
 }
 
 @media (max-width: 900px) {
@@ -733,7 +787,7 @@ a {
   }
 
   .project-grid {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1792,6 +1846,39 @@ a {
   gap: 20px;
 }
 
+.detail-hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+}
+
+.detail-hero-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Vertical photo alongside the hero copy. The source photo is a very
+   tall, narrow full-length shot of the rocket, so the box is sized to
+   that same narrow aspect ratio (rather than the wider
+   .detail-results-image box) so the whole rocket shows with no
+   cropping. */
+.detail-hero-image {
+  display: block;
+  width: 110px;
+  height: 400px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid #b8c7d3;
+  object-fit: contain;
+  background-color: #0f172a;
+}
+
 .detail-eyebrow {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
@@ -2063,6 +2150,15 @@ a {
 
   .detail-hero-title {
     font-size: 40px;
+  }
+
+  .detail-hero-row {
+    flex-direction: column;
+  }
+
+  .detail-hero-image {
+    width: 90px;
+    height: 320px;
   }
 
   .detail-materials-heading,

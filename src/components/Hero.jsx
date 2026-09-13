@@ -16,7 +16,7 @@ export default function Hero() {
 
       <p className="hero-text">
         I’m Aaron Weisenburger, a sophomore Aerospace Engineering student
-        focused on rocketry, CAD design, composite fabrication, and hands-on
+        focused on rocketry, CAD, composite fabrication, and hands-on
         engineering.
       </p>
 

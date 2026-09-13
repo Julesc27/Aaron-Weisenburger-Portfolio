@@ -19,7 +19,7 @@ export default function FeaturedWork() {
         </div>
 
         <article className="feature-card">
-          <div className="feature-card-image">picture</div>
+          <div className="feature-card-image"></div>
           <div className="feature-card-body">
             <h3>{featuredProject.title}</h3>
             <p>{featuredProject.description}</p>
