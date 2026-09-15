@@ -33,7 +33,7 @@ export const projects = [
     description:
       "Structures lead for RRS's Intercollegiate Rocketry and Engineering Competition(IREC) team committee, designning an aerospace vehicle with airbrakes to achieve an apogee 30,000 ft with a student-developed solied rocket motor. Organied team meetings approximately 4 hours a week to CAD and then fabricate a subscale of the IREC rocket to develop necessary skills for the actual vehicle.",
     results: "Coming Soon ",
-    tags: ["Composites", "OpenRocket Simulator", "CAD", "Soldering"],
+    tags: ["Composites", "OpenRocket Simulator", "CAD/CAM", "Soldering"],
     category: "Aerospace",
   },
   {
