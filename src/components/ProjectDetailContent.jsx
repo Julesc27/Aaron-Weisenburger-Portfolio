@@ -17,6 +17,11 @@ export default function ProjectDetailContent({ detail, project }) {
   const hasResults =
     Boolean(detail.resultsHeading) || resultsImages.length > 0 || resultsParagraphs.length > 0;
 
+  // This project's hero photo looked flush against the right edge, far
+  // from the text — a one-off tweak (this page only) to center it in the
+  // empty space instead, using two equal flexible spacers around it.
+  const centerHeroImage = project.id === 'l2-rocket-mk2';
+
   return (
     <>
       <section className="detail-hero">
@@ -37,7 +42,7 @@ export default function ProjectDetailContent({ detail, project }) {
               ← Back to Projects
             </Link>
           </div>
-          <div className="detail-hero-row">
+          <div className={`detail-hero-row${centerHeroImage ? ' detail-hero-row--centered-image' : ''}`}>
             <div className="detail-hero-main">
               {detail.eyebrow && <p className="detail-eyebrow">{detail.eyebrow}</p>}
               <h1 className="detail-hero-title">{detail.heroTitle ?? project.title}</h1>
@@ -56,7 +61,16 @@ export default function ProjectDetailContent({ detail, project }) {
                 </div>
               )}
             </div>
-            {detail.heroImage && (
+            {detail.heroImage && centerHeroImage && (
+              <div className="detail-hero-image-wrap">
+                <img
+                  className="detail-hero-image"
+                  src={detail.heroImage.src}
+                  alt={detail.heroImage.alt}
+                />
+              </div>
+            )}
+            {detail.heroImage && !centerHeroImage && (
               <img
                 className="detail-hero-image"
                 src={detail.heroImage.src}

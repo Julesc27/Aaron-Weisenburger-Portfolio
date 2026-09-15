@@ -1863,6 +1863,28 @@ a {
   min-width: 0;
 }
 
+/* One-off layout for this project's hero only: instead of the text
+   growing to fill the row (which left the photo flush against the far
+   right edge), let the text size to its own content, drop the row's
+   fixed gap (the wrap below provides its own spacing), and center the
+   photo inside the remaining space so it sits evenly between the end of
+   the text and the row's end at any viewport width. */
+.detail-hero-row--centered-image {
+  gap: 0;
+}
+
+.detail-hero-row--centered-image .detail-hero-main {
+  flex: 0 1 auto;
+}
+
+.detail-hero-image-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 /* Vertical photo alongside the hero copy. The source photo is a very
    tall, narrow full-length shot of the rocket, so the box is sized to
    that same narrow aspect ratio (rather than the wider
