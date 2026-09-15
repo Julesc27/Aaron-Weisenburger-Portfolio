@@ -17,10 +17,24 @@ export default function ProjectDetailContent({ detail, project }) {
   const hasResults =
     Boolean(detail.resultsHeading) || resultsImages.length > 0 || resultsParagraphs.length > 0;
 
-  // This project's hero photo looked flush against the right edge, far
-  // from the text — a one-off tweak (this page only) to center it in the
-  // empty space instead, using two equal flexible spacers around it.
-  const centerHeroImage = project.id === 'l2-rocket-mk2';
+  // Both rocket projects' hero photos looked flush against the right edge,
+  // far from the text — a one-off tweak (these pages only) to center them
+  // in the empty space instead, via the .detail-hero-image-wrap flexbox
+  // technique below.
+  const CENTERED_HERO_IMAGE_PROJECTS = ['l2-rocket-mk1', 'l2-rocket-mk2'];
+  const centerHeroImage = CENTERED_HERO_IMAGE_PROJECTS.includes(project.id);
+
+  // MK2's photo is an extremely tall, narrow full-body shot, so it keeps
+  // the default narrow box but shows the whole (uncropped) photo. MK1's
+  // photo has a wider aspect ratio, so it instead gets a wider box sized
+  // to match — no need for `contain`, since `cover` already shows the
+  // whole photo when the box matches its aspect ratio.
+  const heroImageModifierClass =
+    project.id === 'l2-rocket-mk2'
+      ? ' detail-hero-image--contain'
+      : project.id === 'l2-rocket-mk1'
+        ? ' detail-hero-image--wide'
+        : '';
 
   return (
     <>
@@ -64,7 +78,7 @@ export default function ProjectDetailContent({ detail, project }) {
             {detail.heroImage && centerHeroImage && (
               <div className="detail-hero-image-wrap">
                 <img
-                  className="detail-hero-image"
+                  className={`detail-hero-image${heroImageModifierClass}`}
                   src={detail.heroImage.src}
                   alt={detail.heroImage.alt}
                 />

@@ -1897,8 +1897,22 @@ a {
   flex-shrink: 0;
   border-radius: 10px;
   border: 1px solid #b8c7d3;
-  object-fit: contain;
+  object-fit: cover;
   background-color: #0f172a;
+}
+
+/* This project's photo is an extremely tall, narrow full-length shot —
+   cover would crop the nose or fins off, so it keeps showing the whole
+   photo (letterboxed) instead of filling the frame like other heroes. */
+.detail-hero-image--contain {
+  object-fit: contain;
+}
+
+/* This project's launch photo is noticeably wider than the default
+   narrow box (sized for the other project's full-body rocket shot), so
+   give it its own wider box matching its own aspect ratio. */
+.detail-hero-image--wide {
+  width: 184px;
 }
 
 .detail-eyebrow {
@@ -2126,7 +2140,7 @@ a {
 .detail-results-body {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   gap: 40px;
 }
 
@@ -2143,6 +2157,7 @@ a {
   height: 400px;
   border-radius: 10px;
   border: 1px solid #b8c7d3;
+  background-color: #0f172a;
   object-fit: cover;
 }
 
@@ -2181,6 +2196,10 @@ a {
   .detail-hero-image {
     width: 90px;
     height: 320px;
+  }
+
+  .detail-hero-image--wide {
+    width: 147px;
   }
 
   .detail-materials-heading,
