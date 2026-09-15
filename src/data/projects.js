@@ -36,6 +36,22 @@ export const projects = [
     tags: ["Composites", "OpenRocket Simulator", "CAD", "Soldering"],
     category: "Aerospace",
   },
+  {
+    id: "glove-box-holder",
+    title: "Glovebox Holder",
+    description:
+      "Designed a holder for nitrile examination gloves(223.83 mm x 127 mm x 60.33 mm) to make gloves more accessible to change the resin and take prints off of the Formlabs Form 4 Resin printer in RPI’s student makerspace",
+    tags: ["CAD", "Saftey", "FDM Printing"],
+    category: "Mechanical",
+  },
+  {
+    id: "ammo-box",
+    title: "Ammo Box",
+    description:
+      " All freshman room managers apart of RPI’s Makerspace, “The Forge”, were given a challenge to custom-make a box using every machine in the space",
+    tags: ["CAD", "Probelm Solving", "FDM Printing"],
+    category: "Mechanical",
+  },
 ];
 
 // All projects together, for the /projects page — the homepage's

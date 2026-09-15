@@ -1711,14 +1711,28 @@ a {
   z-index: 0;
 }
 
+/* Fixed to the viewport so the glow stays visible while scrolling through
+   the (variable-length) project list, instead of scrolling away with the
+   page after the first screen. `.projects-page` uses overflow:hidden for
+   the pattern/glow clipping elsewhere on the site, which silently breaks
+   position:sticky on any descendant — fixed + a JS-driven fade (see
+   ProjectsPage.jsx's footer IntersectionObserver) is what actually works
+   here, fading the glow out just before the footer scrolls into view so
+   it never overlaps it. */
 .projects-page-glow {
-  position: absolute;
+  position: fixed;
   left: 77px;
   top: 121px;
   width: 1299px;
   height: 975px;
   pointer-events: none;
   z-index: 0;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.projects-page-glow--hidden {
+  opacity: 0;
 }
 
 .projects-page-glow img {
@@ -1915,6 +1929,31 @@ a {
   width: 184px;
 }
 
+/* This project's hero photo is a landscape team photo, not a tall
+   vertical rocket shot — the default narrow portrait box (110x400)
+   cropped it down to a nearly-invisible sliver. Size the box to this
+   photo's own (roughly 3:2) aspect ratio instead so the photo actually
+   reads. */
+.detail-hero-image--landscape {
+  width: 390px;
+  height: 260px;
+}
+
+/* This project's hero photo is a straight-on product shot (roughly
+   3:4), not the very narrow full-length rocket shots the default box
+   was sized for — give it its own box matching its own aspect ratio. */
+.detail-hero-image--product {
+  width: 300px;
+}
+
+/* This project's hero photo is a standard ~4:3 product photo (a phone
+   shot of the finished box), wider and shorter than the other hero
+   photos — give it its own box matching that ratio. */
+.detail-hero-image--photo {
+  width: 390px;
+  height: 293px;
+}
+
 .detail-eyebrow {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
@@ -2069,6 +2108,39 @@ a {
   padding: 60px 0 90px;
 }
 
+/* Hero and Results both use this same dark navy background. Normally
+   the light Materials section sits between them and breaks that up, but
+   a project without a Materials section has Results sitting directly
+   against Hero — same color, same pattern, no visible seam. A thin
+   accent line marks that boundary whenever there's no Materials
+   section, regardless of how Results itself ends up styled. */
+.detail-results--divider {
+  border-top: 2px solid rgba(245, 158, 11, 0.5);
+}
+
+/* A project with no Materials section AND no other light element (like
+   an image carousel) inside Results needs the whole section flipped to
+   a light background instead, so it still reads as distinct from Hero. */
+.detail-results--light {
+  background-color: #f8fafc;
+}
+
+.detail-results--light .detail-results-glow {
+  display: none;
+}
+
+.detail-results--light .detail-results-heading {
+  color: #0f172a;
+}
+
+.detail-results--light .detail-skills-line {
+  color: #2563eb;
+}
+
+.detail-results--light .detail-results-text {
+  color: #1f2937;
+}
+
 .detail-results::before {
   content: "";
   position: absolute;
@@ -2080,6 +2152,16 @@ a {
   opacity: 0.05;
   pointer-events: none;
   z-index: 0;
+}
+
+/* The rule above uses mix-blend-mode: screen, which only shows up
+   against a dark background — on this light background it would stay
+   invisible, so redraw it the same low-key way the light Materials
+   section does. This has to come after the rule above (same
+   specificity) to actually win. */
+.detail-results--light::before {
+  mix-blend-mode: normal;
+  opacity: 0.05;
 }
 
 .detail-results-glow {
@@ -2161,6 +2243,18 @@ a {
   object-fit: cover;
 }
 
+/* This project's results photo is a wide CAD drawing (roughly 3:2),
+   not the default portrait shape — and unlike a photo, cropping it
+   could cut off dimension lines or labels, so size the box to the
+   drawing's own aspect ratio (and let it flex with the viewport)
+   instead of forcing the default fixed portrait box. */
+.detail-results-image--drawing {
+  width: 432px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1225 / 793;
+}
+
 .detail-results-text {
   flex: 1 1 400px;
   font-family: "IBM Plex Sans", sans-serif;
@@ -2176,6 +2270,118 @@ a {
 
 .detail-results-text p:last-child {
   margin-bottom: 0;
+}
+
+/* ===== Image carousel — used in place of a static image (or a row of
+   them) when a project has several photos/drawings worth stepping
+   through one at a time. It's a light, patterned card sitting inside
+   the dark Results section, so it reads as its own distinct element
+   rather than blending into the background. ===== */
+.image-carousel {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 400px;
+  max-width: 480px;
+  background-color: #f8fafc;
+  border: 1px solid #b8c7d3;
+  border-radius: 14px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.image-carousel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/pattern.png");
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.image-carousel-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1225 / 793;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+.image-carousel-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.image-carousel-nav:hover {
+  background-color: #ffffff;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.image-carousel-nav--prev {
+  left: 10px;
+}
+
+.image-carousel-nav--next {
+  right: 10px;
+}
+
+.image-carousel-caption {
+  position: relative;
+  z-index: 1;
+  margin: 16px 0 0;
+  text-align: center;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.image-carousel-dots {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.image-carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  cursor: pointer;
+}
+
+.image-carousel-dot--active {
+  width: 20px;
+  border-radius: 4px;
+  background-color: #f59e0b;
 }
 
 @media (max-width: 900px) {
@@ -2202,6 +2408,21 @@ a {
     width: 147px;
   }
 
+  .detail-hero-image--landscape {
+    width: 280px;
+    height: 187px;
+  }
+
+  .detail-hero-image--product {
+    width: 240px;
+    height: 320px;
+  }
+
+  .detail-hero-image--photo {
+    width: 280px;
+    height: 210px;
+  }
+
   .detail-materials-heading,
   .detail-results-heading {
     font-size: 36px;
@@ -2212,6 +2433,16 @@ a {
     max-width: 325px;
     height: 320px;
   }
+
+  /* Re-assert the drawing's own aspect ratio here — otherwise the
+     generic mobile override above (fixed 320px height) would stretch
+     or crop it, same as any other .detail-results-image. */
+  .detail-results-image--drawing {
+    max-width: 325px;
+    height: auto;
+    aspect-ratio: 1225 / 793;
+  }
+
 }
 
 /* ===== Breadcrumb trail + "back to projects" link, shared by project

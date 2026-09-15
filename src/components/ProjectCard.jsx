@@ -7,12 +7,14 @@ export default function ProjectCard({ title, description, results, tags }) {
       <div className="project-card-body">
         <h3>{title}</h3>
         <p>{description}</p>
-        <p className="feature-results">
-          <span className="results-divider"></span>
-          <span>
-            <strong>Results</strong>: {results}
-          </span>
-        </p>
+        {results && (
+          <p className="feature-results">
+            <span className="results-divider"></span>
+            <span>
+              <strong>Results</strong>: {results}
+            </span>
+          </p>
+        )}
         <TagList tags={tags} />
       </div>
     </article>
